@@ -23,7 +23,7 @@ end
 
 desc 'Run RuboCop over this gem'
 task :internal_investigation do
-  sh('bundle exec rubocop --require rubocop-rspec')
+  sh('bundle exec rubocop --require rubocop-capybara')
 end
 
 desc 'Build config/default.yml'
@@ -73,7 +73,7 @@ task :new_cop, [:cop] do |_task, args|
   generator = RuboCop::Cop::Generator.new(cop_name)
   generator.write_source
   generator.write_spec
-  generator.inject_require(root_file_path: 'lib/rubocop/cop/rspec_cops.rb')
+  generator.inject_require(root_file_path: 'lib/rubocop/cop/capybara_cops.rb')
   generator.inject_config
 
   puts generator.todo

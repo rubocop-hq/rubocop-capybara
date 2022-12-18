@@ -1,25 +1,21 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path('lib', __dir__)
-require 'rubocop/rspec/version'
+require 'rubocop/capybara/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'rubocop-rspec'
-  spec.summary = 'Code style checking for RSpec files'
+  spec.name = 'rubocop-capybara'
+  spec.summary = 'Code style checking for Capybara test files'
   spec.description = <<-DESCRIPTION
-    Code style checking for RSpec files.
+    Code style checking for Capybara test files (RSpec, Cucumber, Minitest).
     A plugin for the RuboCop code style enforcing & linting tool.
   DESCRIPTION
-  spec.homepage = 'https://github.com/rubocop/rubocop-rspec'
-  spec.authors = ['John Backus', 'Ian MacLeod', 'Nils Gemeinhardt']
-  spec.email = [
-    'johncbackus@gmail.com',
-    'ian@nevir.net',
-    'git@nilsgemeinhardt.de'
-  ]
+  spec.homepage = 'https://github.com/rubocop/rubocop-capybara'
+  spec.authors = ['foo'] # TODO
+  spec.email = ['foo']
   spec.licenses = ['MIT']
 
-  spec.version = RuboCop::RSpec::Version::STRING
+  spec.version = RuboCop::Capybara::Version::STRING
   spec.platform = Gem::Platform::RUBY
   spec.required_ruby_version = '>= 2.6.0'
 
@@ -33,7 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     'changelog_uri' => 'https://github.com/rubocop/rubocop-rspec/blob/master/CHANGELOG.md',
-    'documentation_uri' => 'https://docs.rubocop.org/rubocop-rspec/',
+    'documentation_uri' => 'https://docs.rubocop.org/rubocop-capybara/',
     'rubygems_mfa_required' => 'true'
   }
 
