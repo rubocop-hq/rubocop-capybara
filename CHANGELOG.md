@@ -35,7 +35,6 @@
 - Add `RSpec/Capybara/CurrentPathExpectation` cop for feature specs, disallowing setting expectations on `current_path`. ([@timrogers])
 - Add `RSpec/Capybara` namespace including the first cop for feature specs: `Capybara/FeatureMethods`. ([@rspeicher])
 
-
 <!-- Contributors (alphabetically) -->
 
 [@aried3r]: https://github.com/aried3r
