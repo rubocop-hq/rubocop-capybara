@@ -12,7 +12,6 @@ Gem::Specification.new do |spec|
   DESCRIPTION
   spec.homepage = 'https://github.com/rubocop/rubocop-capybara'
   spec.authors = ['foo'] # TODO
-  spec.email = ['foo']
   spec.licenses = ['MIT']
 
   spec.version = RuboCop::Capybara::Version::STRING
