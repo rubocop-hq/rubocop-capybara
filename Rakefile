@@ -14,6 +14,7 @@ rescue Bundler::BundlerError => e
 end
 
 require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
 
 Dir['tasks/**/*.rake'].each { |t| load t }
 
@@ -22,13 +23,32 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 
 desc 'Run RuboCop over this gem'
-task :internal_investigation do
-  sh('bundle exec rubocop --require rubocop-capybara')
-end
+RuboCop::RakeTask.new(:internal_investigation)
 
 desc 'Build config/default.yml'
 task :build_config do
-  sh('bin/build_config')
+  require 'yard'
+
+  require 'rubocop-capybara'
+  require 'rubocop/capybara/config_formatter'
+  require 'rubocop/capybara/description_extractor'
+
+  glob = File.join('lib', 'rubocop', 'cop', 'capybara', '*.rb')
+  YARD::Tags::Library.define_tag('Cop Safety Information', :safety)
+  YARD.parse(Dir[glob], [])
+
+  descriptions =
+    RuboCop::Capybara::DescriptionExtractor.new(YARD::Registry.all(:class)).to_h
+  current_config = if Psych::VERSION >= '4.0.0' # RUBY_VERSION >= '3.1.0'
+                     YAML.unsafe_load_file('config/default.yml')
+                   else
+                     YAML.load_file('config/default.yml')
+                   end
+
+  File.write(
+    'config/default.yml',
+    RuboCop::Capybara::ConfigFormatter.new(current_config, descriptions).dump
+  )
 end
 
 desc 'Confirm config/default.yml is up to date'
