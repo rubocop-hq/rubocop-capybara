@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
     A plugin for the RuboCop code style enforcing & linting tool.
   DESCRIPTION
   spec.homepage = 'https://github.com/rubocop/rubocop-capybara'
-  spec.authors = ['foo'] # TODO
+  spec.authors = ['Yudai Takada']
   spec.licenses = ['MIT']
 
   spec.version = RuboCop::Capybara::Version::STRING
